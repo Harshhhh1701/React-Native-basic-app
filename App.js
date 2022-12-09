@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,Button,TextInput,FlatList, Alert } from 'react-native';
+import { StyleSheet, Text, View,Button,TextInput,FlatList, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import React, {useState} from 'react';
 import Header from './components/header';
 import TodoItem from './components/todoitem';
@@ -31,7 +31,10 @@ export default function App() {
     }
   }
    return(
-    <View style={styles.container}>
+    <TouchableWithoutFeedback onPress={()=>{
+      Keyboard.dismiss();
+    }}>
+      <View style={styles.container}>
       <Header/>
         <View style={styles.content}>
           <AddTodo submitHandler={submitHandler}/>
@@ -45,6 +48,7 @@ export default function App() {
             </View>
         </View>
     </View>
+    </TouchableWithoutFeedback>
    );
 }
 
