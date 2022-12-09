@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,Button,TextInput,FlatList } from 'react-native';
+import { StyleSheet, Text, View,Button,TextInput,FlatList, Alert } from 'react-native';
 import React, {useState} from 'react';
 import Header from './components/header';
 import TodoItem from './components/todoitem';
@@ -16,12 +16,19 @@ export default function App() {
     })
   }
   const submitHandler=(text)=>{
-    setTodos((prevTodos)=>{
-      return[
-        {text:text,key:Math.random().toString()},
-        ...prevTodos
-      ]
-    })
+    if(text.length>3){
+      setTodos((prevTodos)=>{
+        return[
+          {text:text,key:Math.random().toString()},
+          ...prevTodos
+        ]
+      })
+    }
+    else{
+      Alert.alert('OOPS!','Todos must be over 3 characters long',[
+        {text:'Understood',onPress:()=>console.log('alert closed')}
+      ])
+    }
   }
    return(
     <View style={styles.container}>
