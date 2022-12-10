@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import Header from './components/header';
 import TodoItem from './components/todoitem';
 import AddTodo from './components/addtodo';
+import Sandbox from './components/sandbox';
 export default function App() {
   const[todos,setTodos]=useState([
     {text:'buy coffee',key:'1'},
@@ -31,6 +32,7 @@ export default function App() {
     }
   }
    return(
+    // <Sandbox/>
     <TouchableWithoutFeedback onPress={()=>{
       Keyboard.dismiss();
     }}>
@@ -60,9 +62,13 @@ const styles = StyleSheet.create({
     
   },
   content:{
+    flex:1,
+   
     padding:40,
   },
   list:{
+    flex:1,
+  
     marginTop:20,
   }
 });
